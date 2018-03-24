@@ -11,7 +11,7 @@ what's called.
 """
 
 # Dependencies
-import base64, io, os, re, sys, threading, SimpleHTTPServer, SocketServer
+import base64, io, os, re, sys, threading, SimpleHTTPServer, SocketServer, os.path
 # Attempt to import PIL - if it doesn't exist we won't be able to make use of
 # some performance enhancing goodness, but imageMe will still work fine
 PIL_ENABLED = False
@@ -153,7 +153,7 @@ def _create_index_file(
             '    <td>',
             '    <a href="' + link_target + '">',
             '        <img class="image" src="' + img_src + '">',
-            '    </a>',
+            '    </a>' + os.path.basename(link_target),
             '    </td>'
         ]
         if table_row_count == IMAGES_PER_ROW:
