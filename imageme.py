@@ -153,7 +153,7 @@ def _create_index_file(
             '    <td>',
             '    <a href="' + link_target + '">',
             '        <img class="image" src="' + img_src + '">',
-            '    </a>' + os.path.basename(link_target),
+            '    </a><br/>' + os.path.basename(link_target),
             '    </td>'
         ]
         if table_row_count == IMAGES_PER_ROW:
