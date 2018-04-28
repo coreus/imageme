@@ -150,8 +150,9 @@ def _create_index_file(
             location, image_file, force_no_processing
         )
         labels = []
-        if os.path.isfile(image_file+'.txt'):
-            with open (image_file+'.txt', "r") as f:
+        labels_file = location+'/'+image_file+'.txt'
+        if os.path.isfile(labels_file):
+            with open (labels_file, "r") as f:
                 labels=f.readlines()
         html += [
             '    <td>',
