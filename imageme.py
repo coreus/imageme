@@ -11,7 +11,7 @@ what's called.
 """
 
 # Dependencies
-import base64, io, os, re, sys, threading, SimpleHTTPServer, SocketServer, os.path
+import base64, io, os, re, sys, threading, SimpleHTTPServer, SocketServer, os.path,urllib
 # Attempt to import PIL - if it doesn't exist we won't be able to make use of
 # some performance enhancing goodness, but imageMe will still work fine
 PIL_ENABLED = False
@@ -149,12 +149,16 @@ def _create_index_file(
         link_target = _get_image_link_target_from_file(
             location, image_file, force_no_processing
         )
+        if os.path.isfile(image_file+'.txt'):
+            with open (image_file+'.txt', "r") as f:
+                labels=f.readlines()
         html += [
             '    <td>',
+            '    <p style="width:31vw;overflow:hidden;">' + ','.join(labels) + '</p>',
             '    <a href="' + link_target + '">',
-            '        <img class="image" src="' + img_src + '">',
-            '    </a><br/>' + os.path.basename(link_target),
-            '    </td>'
+            '        <img class="image" src="' + urllib.unquote(img_src) + '">',
+            '    </a><br/><p style="width:31vw;overflow:hidden;">' + os.path.basename(link_target),
+            '    </p></td>'
         ]
         if table_row_count == IMAGES_PER_ROW:
             table_row_count = 0
