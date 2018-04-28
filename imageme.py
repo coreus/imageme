@@ -1,6 +1,4 @@
 #!/usr/bin/python
-#-*- coding: utf-8 -*-
-
 """
 imageMe is a super simple image gallery server.
 
