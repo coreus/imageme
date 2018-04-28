@@ -149,6 +149,7 @@ def _create_index_file(
         link_target = _get_image_link_target_from_file(
             location, image_file, force_no_processing
         )
+        labels = []
         if os.path.isfile(image_file+'.txt'):
             with open (image_file+'.txt', "r") as f:
                 labels=f.readlines()
