@@ -160,7 +160,7 @@ def _create_index_file(
             '    <td>',
             '    <p style="width:31vw;overflow:hidden;">' + ','.join(labels) + '</p>',
             '    <a href="' + link_target + '">',
-            '        <img class="image" src="' + urllib.quote(img_src) + '">',
+            '        <img class="image" src="' + urllib.unquote(img_src) + '">',
             '    </a><br/><p style="width:31vw;overflow:hidden;">' + os.path.basename(link_target),
             '    </p></td>'
         ]
